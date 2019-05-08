@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bootstrap 4 Example</title>
+<title>Nhập môn công nghệ phần mềm - chiều - nhóm 03</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -23,10 +23,8 @@
 	<!-- Grey with black text -->
 	<nav class="navbar navbar-expand-sm bg-light navbar-light">
 		<ul class="navbar-nav">
-			<li class="nav-item active"><a class="nav-link" href="#">Giữa
-					kì - chuyên đề web</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Quản lý
-					sinh viên</a></li>
+			<li class="nav-item active"><a class="nav-link" href="#">NMCNPM - Chiều - Nhóm 03</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Quản lý thành viên</a></li>
 		</ul>
 	</nav>
 	<div class="container">
@@ -34,13 +32,24 @@
 			<h1>Quản lý thành viên</h1>
 			<p>Danh sách thành viên</p>
 		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<p>
+					<button type="button"
+						onclick="location.href='<c:url value="/member/add" />';"
+						class="btn btn-success btn-block">
+						<i class="fas fa-plus-square"></i> Thêm thông tin thành viên
+					</button>
+				</p>
+			</div>
+		</div>
 		<div class="row">Tổng số thành viên ${fn:length(members)}</div>
 		<table id="example" style="width: 100%">
 			<thead>
 				<tr>
 					<th>Họ tên</th>
 					<th>Ngày sinh</th>
-					<th>Địa chỉ</th>
 					<th>Email</th>
 					<th>Thao tác</th>
 				</tr>
@@ -49,8 +58,7 @@
 				<c:forEach items="${members}" var="item">
 					<tr>
 						<td>${item.fullName }</td>
-						<td>${item.birthday }</td>
-						<td>${item.address }</td>
+						<td>${item.dateOfBirth }</td>
 						<td>${item.email }</td>
 						<td>
 							<button type="button" class="btn btn-primary btn-sm">
@@ -80,7 +88,7 @@
 			$('#example').DataTable({
 
 				'columnDefs' : [ {
-					'targets' : 4, // column index (start from 0)
+					'targets' : 3, // column index (start from 0)
 					'orderable' : false, // set orderable false for selected columns
 				} ]
 			});

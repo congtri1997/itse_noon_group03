@@ -1,5 +1,7 @@
 package edu.hcmuaf.fit.itse.noon.group03.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,35 +23,19 @@ public class Member {
 	@Column(name = "MATKHAU")
 	private String password;
 
-	@Column(name = "HOTEN")
-	private String fullName;
+	@Column(name = "HO")
+	private String lastName;
+
+	@Column(name = "TEN")
+	private String firstName;
 
 	@Column(name = "NGSINH")
-	private String birthday;
-
-	@Column(name = "NU")
-	private boolean female;
-
-	@Column(name = "TDVANHOA")
-	private String education;
-
-	@Column(name = "DIACHI")
-	private String address;
+	private LocalDate dateOfBirth;
 
 	@Column(name = "DIENTHOAI")
 	private String phone;
-
-	public Member(String email, String password, String fullName, String birthday, boolean female, String education,
-			String address, String phone) {
-		this.email = email;
-		this.password = password;
-		this.fullName = fullName;
-		this.birthday = birthday;
-		this.female = female;
-		this.education = education;
-		this.address = address;
-		this.phone = phone;
-	}
+	@Column(name = "TENTAIKHOAN")
+	private String userName;
 
 	public Member() {
 	}
@@ -70,52 +56,48 @@ public class Member {
 		this.password = password;
 	}
 
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
-
-	public boolean isFemale() {
-		return female;
-	}
-
-	public void setFemale(boolean female) {
-		this.female = female;
-	}
-
-	public String getEducation() {
-		return education;
-	}
-
-	public void setEducation(String education) {
-		this.education = education;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getFullName() {
+		return lastName + " " + firstName;
 	}
 
 }

@@ -17,36 +17,40 @@ import edu.hcmuaf.fit.itse.noon.group03.entity.Member;
 import edu.hcmuaf.fit.itse.noon.group03.form.FormAddMember;
 import edu.hcmuaf.fit.itse.noon.group03.service.MemberService;
 import edu.hcmuaf.fit.itse.noon.group03.util.MyUtils;
+import edu.hcmuaf.fit.itse.noon.group03.validator.MemberAddvalidator;
 
 @Controller
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	@Autowired
+	private MemberAddvalidator memberAddValidator;
+
 	@RequestMapping(value = { "/", "/member/list" }, method = RequestMethod.GET)
 	public String list(Model model) {
 		List<Member> members = memberService.getMembers();
 		model.addAttribute("members", members);
-		return "member_list";
+		return "list_member";
 	}
 
 	@RequestMapping(value = { "/member/add" }, method = RequestMethod.GET)
 	public String addMember(Model model) {
 		FormAddMember formAddMember = new FormAddMember();
-		model.addAttribute("member", formAddMember);
+		model.addAttribute("formAddMember", formAddMember);
 		return "add_member";
 	}
 
 	@RequestMapping(value = "/member/add", method = RequestMethod.POST)
-	public String doAddThanhVien(@ModelAttribute("member") @Valid FormAddMember formAddMember, BindingResult result,
-			ModelMap modelMap) {
+	public String doAddThanhVien(@ModelAttribute("formAddMember") @Valid FormAddMember formAddMember,
+			BindingResult result, ModelMap modelMap) {
+		memberAddValidator.validate(formAddMember, result);
 		if (result.hasErrors()) {
 			return "add_member";
 		}
 
-		Member member = MyUtils.convertFormAddMembertoMember(formAddMember);
-		memberService.addMember(member);
-		return "success";
+		memberService.addMember(formAddMember);
+		return "redirect:/member/list";
 	}
 
 }

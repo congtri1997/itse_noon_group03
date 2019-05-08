@@ -12,6 +12,7 @@ import edu.hcmuaf.fit.itse.noon.group03.entity.Member;
 
 @Repository
 public class MemberDAO {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 

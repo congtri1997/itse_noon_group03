@@ -1,49 +1,47 @@
 package edu.hcmuaf.fit.itse.noon.group03.form;
 
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import edu.hcmuaf.fit.itse.noon.group03.entity.Member;
 
 public class FormAddMember {
-	@Email
-	@NotBlank
 	private String email;
-	@NotBlank
 	private String password;
-	@NotBlank
 	private String confirmPassword;
-	@NotBlank
-	private String fullName;
-	@NotBlank
+	private String firstName;
+	private String lastName;
 
-	private String birthday;
-	private String female;
-	private String education;
-	private String address;
-	@Pattern(regexp = "(^$|[0-9]{10})")
+	private String dateOfBirth;
+//	@Pattern(regexp = "(^$|[0-9]{10})")
 	private String phoneNumber;
 
-	@AssertTrue(message = "passVerify field should be equal than pass field")
-	private boolean isValid() {
-		return password == null ? false : password.equals(confirmPassword);
+	private String userName;
+
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public FormAddMember(String email, String password, String confirmPassword, String fullName, String birthday,
-			String female, String education, String address, String phoneNumber) {
-		this.email = email;
-		this.password = password;
-		this.confirmPassword = confirmPassword;
-		this.fullName = fullName;
-		this.birthday = birthday;
-		this.female = female;
-		this.education = education;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public FormAddMember() {
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public String getEmail() {
@@ -70,44 +68,12 @@ public class FormAddMember {
 		this.confirmPassword = confirmPassword;
 	}
 
-	public String getFullName() {
-		return fullName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
-
-	public String getFemale() {
-		return female;
-	}
-
-	public void setFemale(String female) {
-		this.female = female;
-	}
-
-	public String getEducation() {
-		return education;
-	}
-
-	public void setEducation(String education) {
-		this.education = education;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPhoneNumber() {
@@ -116,6 +82,19 @@ public class FormAddMember {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Member convertToEntity(PasswordEncoder passwordEncoder) {
+		Member member = new Member();
+		member.setEmail(email);
+		member.setPassword(passwordEncoder.encode(password));
+		member.setPhone(phoneNumber);
+		member.setFirstName(firstName);
+		member.setLastName(lastName);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		member.setDateOfBirth(LocalDate.parse(dateOfBirth, formatter));
+		member.setUserName(userName);
+		return member;
 	}
 
 }

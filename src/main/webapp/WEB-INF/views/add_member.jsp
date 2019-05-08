@@ -31,8 +31,11 @@
 			<h1>Quản lý thành viên</h1>
 			<p>Thêm thông tin thành viên</p>
 		</div>
-		<form:form id="formAddStudent" action="add" method="post"
-			modelAttribute="member">
+
+		<c:url var="post_url" value="/member/add" />
+
+		<form:form id="formAddStudent" action="${post_url}" method="post"
+			modelAttribute="formAddMember">
 			<fieldset class="border p-3">
 				<legend class="w-auto">Thêm thông tin thành viên</legend>
 				<div class="form-group row">
@@ -48,6 +51,25 @@
 							<form:input id="email" path="email"
 								placeholder="Vui lòng nhập email" type="text"
 								aria-describedby="emailHelpBlock" class="form-control" />
+						</div>
+						<!-- 	<span id="emailHelpBlock" class="form-text text-muted"></span> -->
+						<form:errors path="email" cssClass="form-text text-muted" />
+
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="userName" class="col-2 col-form-label">*Tài
+						khoản</label>
+					<div class="col-10">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa fa-at"></i>
+								</div>
+							</div>
+							<form:input id="userName" path="userName"
+								placeholder="Vui lòng nhập tên tài khoản" type="text"
+								aria-describedby="userNameHelpBlock" class="form-control" />
 						</div>
 						<!-- 	<span id="emailHelpBlock" class="form-text text-muted"></span> -->
 						<form:errors path="email" cssClass="form-text text-muted" />
@@ -91,7 +113,7 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="lastName" class="col-2 col-form-label">*Họ tên</label>
+					<label for="lastName" class="col-2 col-form-label">*Họ</label>
 					<div class="col-10">
 						<div class="input-group">
 							<div class="input-group-prepend">
@@ -99,17 +121,34 @@
 									<i class="fas fa-user-circle"></i>
 								</div>
 							</div>
-							<form:input id="fullName" path="fullName"
+							<form:input id="lastName" path="lastName"
 								placeholder="Vui lòng nhập họ tên" type="text"
 								class="form-control" aria-describedby="lastNameHelpBlock" />
 						</div>
 						<!-- <span id="lastNameHelpBlock" class="form-text text-muted"></span> -->
-						<form:errors path="fullName" cssClass="form-text text-muted" />
+						<form:errors path="lastName" cssClass="form-text text-muted" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="firstName" class="col-2 col-form-label">*Tên</label>
+					<div class="col-10">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-user-circle"></i>
+								</div>
+							</div>
+							<form:input id="firstName" path="firstName"
+								placeholder="Vui lòng nhập họ tên" type="text"
+								class="form-control" aria-describedby="firstNameHelpBlock" />
+						</div>
+						<!-- <span id="lastNameHelpBlock" class="form-text text-muted"></span> -->
+						<form:errors path="firstName" cssClass="form-text text-muted" />
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="birthday" class="col-2 col-form-label">*Ngày
+					<label for="dateOfBirth" class="col-2 col-form-label">*Ngày
 						sinh</label>
 					<div class="col-10">
 						<div class="input-group">
@@ -118,67 +157,16 @@
 									<i class="fa fa-birthday-cake"></i>
 								</div>
 							</div>
-							<form:input id="birthday" path="birthday"
+							<form:input id="dateOfBirth" path="dateOfBirth"
 								placeholder="Vui lòng chọn ngày sinh" type="text"
-								class="form-control" aria-describedby="birthdayHelpBlock" />
+								class="form-control" aria-describedby="dateOfBirthHelpBlock" />
 						</div>
-						<form:errors path="birthday" cssClass="form-text text-muted" />
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-2">Giới tính</label>
-					<div class="col-10">
-						<div class="custom-control custom-radio custom-control-inline">
-							<form:radiobutton path="female" id="gender_0"
-								aria-describedby="genderHelpBlock" class="custom-control-input"
-								value="true" />
-							<label for="gender_0" class="custom-control-label">Nữ</label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline">
-							<form:radiobutton id="gender_1" path="female"
-								aria-describedby="genderHelpBlock" class="custom-control-input"
-								value="false" />
-							<label for="gender_1" class="custom-control-label">Nam</label>
-						</div>
-						<!-- <span id="genderHelpBlock" class="form-text text-muted"></span> -->
-						<form:errors path="female" cssClass="form-text text-muted" />
+						<form:errors path="dateOfBirth" cssClass="form-text text-muted" />
 					</div>
 				</div>
 
 
-				<div class="form-group row">
-					<label for="favorCourses" class="col-2 col-form-label">Trình
-						độ văn hóa</label>
-					<div class="col-10">
-						<form:select id="education" path="education" class="custom-select">
-							<form:option value="">Chọn ...</form:option>
-							<form:option value="Tốt nghiệp phổ thông">Tốt nghiệp phổ
-								thông</form:option>
-							<form:option value="Cao đẳng">Cao đẳng</form:option>
-							<form:option value="Đại học">Đại học</form:option>
-							<form:option value="Thạc sĩ">Thạc sĩ</form:option>
-							<form:option value="Tiến sĩ">Tiến sĩ</form:option>
-						</form:select>
-						<!-- <span id="favorCoursesHelpBlock" class="form-text text-muted"></span> -->
-						<form:errors path="education" cssClass="form-text text-muted" />
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="favorCourses" class="col-2 col-form-label">Địa
-						chỉ</label>
-					<div class="col-10">
-						<form:select id="address" path="address" class="custom-select">
-							<form:option value="">Chọn ...</form:option>
-							<form:option value="TP Hồ Chí Minh">TP Hồ Chí Minh</form:option>
-							<form:option value="Đà Nẵng">Đà Nẵng</form:option>
-							<form:option value="Huế">Huế</form:option>
-							<form:option value="Hà Nội">Hà Nội</form:option>
-						</form:select>
-						<!-- <span id="favorCoursesHelpBlock" class="form-text text-muted"></span> -->
-						<form:errors path="address" cssClass="form-text text-muted" />
-					</div>
-				</div>
+
 				<div class="form-group row">
 					<label for="phone" class="col-2 col-form-label">Số điện
 						thoại</label>
@@ -206,8 +194,6 @@
 					</div>
 				</div>
 			</fieldset>
-
-
 		</form:form>
 	</div>
 	<script src="<c:url value="/resources/jquery/jquery-3.4.0.js" />"></script>
@@ -219,7 +205,7 @@
 		src="<c:url value="/resources/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/jquery-validation-1.19.0\jquery.validate.js" />"></script>
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		$.validator.addMethod("australianDate", function(value, element) {
 			// put your own logic here, this is just a (crappy) example
 			return value.match(/^\d\d?\/\d\d?\/\d\d\d\d$/);
@@ -284,6 +270,6 @@
 								}
 							});
 		});
-	</script>
+	</script> -->
 </body>
 </html>
