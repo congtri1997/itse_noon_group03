@@ -1,6 +1,6 @@
-# Nhập môn công nghệ phần phần _ Ca chiều _ Nhóm 03
+# itse_noon_group03
 
-# Chuyên Đề Oracle
+# Nhập môn công nghệ phần mềm
 ## Thông tin môn học
 
 
