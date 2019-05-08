@@ -1,6 +1,5 @@
 package edu.hcmuaf.fit.itse.noon.group03.validator;
 
-import javax.validation.ValidatorFactory;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

@@ -100,4 +100,11 @@ public class Member {
 		return lastName + " " + firstName;
 	}
 
+	@Override
+	public String toString() {
+		return "Member [ID=" + ID + ", email=" + email + ", password=" + password + ", lastName=" + lastName
+				+ ", firstName=" + firstName + ", dateOfBirth=" + dateOfBirth + ", phone=" + phone + ", userName="
+				+ userName + "]";
+	}
+
 }

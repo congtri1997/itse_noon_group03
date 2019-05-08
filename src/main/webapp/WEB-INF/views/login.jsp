@@ -25,12 +25,12 @@
 				<!-- <a  class="btn facebook-btn social-btn" href="https://www.facebook.com/dialog/oauth?client_id=359123991240252&redirect_uri=https://localhost:8443/AccessFacebook/login-facebook"><span><i class="fab fa-facebook-f"></i> Sign in with
 						Facebook</span></a> -->
 				<button
-					onclick="location.href='https://www.facebook.com/dialog/oauth?client_id=1291754064336511&scope=email&redirect_uri=http://localhost:8443/SEGr02/LoginController?LoginType=fb'"
+					onclick="location.href='https://www.facebook.com/dialog/oauth?client_id=1291754064336511&scope=email&redirect_uri=http://localhost:8443/itse_noon_group03/LoginController?LoginType=fb'"
 					class="btn facebook-btn social-btn" type="button">
 					<span><i class="fab fa-facebook-f"></i>Sign in with Facebook</span>
 				</button>
 				<button
-					onclick="location.href='https://accounts.google.com/o/oauth2/auth?scope=profile email&redirect_uri=https://localhost:8443/SEGr02/LoginController?LoginType=google&response_type=code&client_id=1047932472616-4l3car2t55h2d9gu51gfafl5ejfhangu.apps.googleusercontent.com&approval_prompt=force'"
+					onclick="location.href='https://accounts.google.com/o/oauth2/auth?scope=profile email&redirect_uri=https://localhost:8443/itse_noon_group03/LoginController?LoginType=google&response_type=code&client_id=1047932472616-4l3car2t55h2d9gu51gfafl5ejfhangu.apps.googleusercontent.com&approval_prompt=force'"
 					class="btn google-btn social-btn" type="button">
 					<span><i class="fab fa-google-plus-g"></i> Sign in with
 						Google+</span>
