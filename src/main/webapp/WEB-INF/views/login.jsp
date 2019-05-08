@@ -37,9 +37,10 @@
 				</button>
 			</div>
 			<p style="text-align: center">OR</p>
-			<input type="text" id="inputUserName" name="userName" class="form-control"
-				placeholder="Email"> <input type="password" name="password"
-				id="inputPassword" class="form-control" placeholder="Password">
+			<input type="text" id="inputUserName" name="userName"
+				class="form-control" placeholder="Email"> <input
+				type="password" name="password" id="inputPassword"
+				class="form-control" placeholder="Password">
 			<%-- 		<%
 				if (request.getAttribute("errorUserName") != null) {
 			%>
@@ -62,7 +63,7 @@
 			<button class="btn btn-success btn-block" type="submit">
 				<i class="fas fa-sign-in-alt"></i> Sign in
 			</button>
-			<a href="#" id="forgot_pswd">Forgot password?</a>
+			<a href="<c:url value="/recoverpassword" />">Forgot password?</a>
 			<hr>
 			<!-- <p>Don't have an account!</p>  -->
 			<button class="btn btn-primary btn-block" type="button"

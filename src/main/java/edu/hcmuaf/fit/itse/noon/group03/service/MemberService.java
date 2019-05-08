@@ -32,4 +32,8 @@ public class MemberService {
 	public List<Member> getMembers() {
 		return memberDAO.getListMember();
 	}
+
+	public Member getMemberByEmail(String email) {
+		return memberDAO.getOneByEmail(email);
+	}
 }

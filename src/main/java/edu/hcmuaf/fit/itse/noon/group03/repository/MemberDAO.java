@@ -12,7 +12,7 @@ import edu.hcmuaf.fit.itse.noon.group03.entity.Member;
 
 @Repository
 public class MemberDAO {
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -26,7 +26,6 @@ public class MemberDAO {
 	public void save(Member member) {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(member);
-
 	}
 
 	public List<Member> getListMember() {
@@ -34,6 +33,34 @@ public class MemberDAO {
 		@SuppressWarnings("unchecked")
 		Query<Member> query = session.createQuery("select m from Member m");
 		return query.getResultList();
+	}
+
+	public Member getOneByUserName(String userName) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "Select m from Member m where m.userName =:userName";
+		@SuppressWarnings("unchecked")
+		Query<Member> query = session.createQuery(hql);
+		query.setParameter("userName", userName);
+		try {
+			Member result = query.getSingleResult();
+			return result;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public Member getOneByEmail(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "Select m from Member m where m.email =:email";
+		@SuppressWarnings("unchecked")
+		Query<Member> query = session.createQuery(hql);
+		query.setParameter("email", email);
+		try {
+			Member result = query.getSingleResult();
+			return result;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }
