@@ -38,9 +38,10 @@
 			</div>
 			<p style="text-align: center">OR</p>
 			<input type="text" id="inputUserName" name="userName"
-				class="form-control" placeholder="Email"> <input
+				class="form-control" placeholder="UserName"> <input
 				type="password" name="password" id="inputPassword"
 				class="form-control" placeholder="Password">
+			<p style="color: red">${loginError }</p>
 			<%-- 		<%
 				if (request.getAttribute("errorUserName") != null) {
 			%>
@@ -57,9 +58,6 @@
 			<%
 				}
 			%> --%>
-			<p style="color: red;">${errorEmail}</p>
-			<p style="color: red;">${errorPassword}</p>
-			<p style="color: red;">${errorLogin}</p>
 			<button class="btn btn-success btn-block" type="submit">
 				<i class="fas fa-sign-in-alt"></i> Sign in
 			</button>
@@ -67,9 +65,12 @@
 			<hr>
 			<!-- <p>Don't have an account!</p>  -->
 			<button class="btn btn-primary btn-block" type="button"
-				id="btn-signup">
+				onclick="location.href='<c:url value="/member/add"/>';"
+				>
 				<i class="fas fa-user-plus"></i> Sign up New Account
 			</button>
+
+
 		</form>
 
 		<form action="/reset/password/" class="form-reset">

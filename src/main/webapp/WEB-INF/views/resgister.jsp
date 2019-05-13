@@ -74,7 +74,7 @@
 								aria-describedby="userNameHelpBlock" class="form-control" />
 						</div>
 						<!-- 	<span id="emailHelpBlock" class="form-text text-muted"></span> -->
-						<form:errors path="userName" cssClass="form-text text-muted" />
+						<form:errors path="email" cssClass="form-text text-muted" />
 
 					</div>
 				</div>

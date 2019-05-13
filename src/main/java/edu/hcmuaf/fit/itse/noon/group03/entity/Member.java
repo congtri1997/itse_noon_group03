@@ -100,6 +100,14 @@ public class Member {
 		return lastName + " " + firstName;
 	}
 
+	public long getID() {
+		return ID;
+	}
+
+	public void setID(long iD) {
+		ID = iD;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [ID=" + ID + ", email=" + email + ", password=" + password + ", lastName=" + lastName

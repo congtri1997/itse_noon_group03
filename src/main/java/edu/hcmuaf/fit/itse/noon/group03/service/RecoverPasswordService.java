@@ -1,4 +1,4 @@
-package edu.hcmuaf.fit.itse.noon.group03.controller;
+package edu.hcmuaf.fit.itse.noon.group03.service;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;

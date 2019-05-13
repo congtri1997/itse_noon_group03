@@ -23,8 +23,10 @@
 	<!-- Grey with black text -->
 	<nav class="navbar navbar-expand-sm bg-light navbar-light">
 		<ul class="navbar-nav">
-			<li class="nav-item active"><a class="nav-link" href="#">NMCNPM - Chiều - Nhóm 03</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Quản lý thành viên</a></li>
+			<li class="nav-item active"><a class="nav-link" href="#">NMCNPM
+					- Chiều - Nhóm 03</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Quản lý
+					thành viên</a></li>
 		</ul>
 	</nav>
 	<div class="container">
@@ -48,23 +50,25 @@
 		<table id="example" style="width: 100%">
 			<thead>
 				<tr>
+					<th>ID</th>
+					<th>Tài khoản</th>
 					<th>Họ tên</th>
 					<th>Ngày sinh</th>
 					<th>Email</th>
-					<th>Thao tác</th>
+					<!-- <th>Mật khẩu</th> -->
+					<th>Số điện thoại</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${members}" var="item">
 					<tr>
+						<td>${item.ID }</td>
+						<td>${item.userName }</td>
 						<td>${item.fullName }</td>
 						<td>${item.dateOfBirth }</td>
 						<td>${item.email }</td>
-						<td>
-							<button type="button" class="btn btn-primary btn-sm">
-								<i class="fas fa-list"></i>
-							</button>
-						</td>
+				<%-- 		<td>${item.password }</td> --%>
+						<td>${item.phone }</td>
 					</tr>
 				</c:forEach>
 

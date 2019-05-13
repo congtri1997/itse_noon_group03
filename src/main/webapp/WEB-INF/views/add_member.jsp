@@ -21,7 +21,7 @@
 	<nav class="navbar navbar-expand-sm bg-light navbar-light">
 		<ul class="navbar-nav">
 			<li class="nav-item active"><a class="nav-link" href="#">Giữa
-					kì - chuyên đề web</a></li>
+					kì - NMCNPM</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Quản lý
 					sinh viên</a></li>
 		</ul>
@@ -72,7 +72,7 @@
 								aria-describedby="userNameHelpBlock" class="form-control" />
 						</div>
 						<!-- 	<span id="emailHelpBlock" class="form-text text-muted"></span> -->
-						<form:errors path="email" cssClass="form-text text-muted" />
+						<form:errors path="userName" cssClass="form-text text-muted" />
 
 					</div>
 				</div>
@@ -205,7 +205,7 @@
 		src="<c:url value="/resources/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/jquery-validation-1.19.0\jquery.validate.js" />"></script>
-<!-- 	<script type="text/javascript">
+	<!-- 	<script type="text/javascript">
 		$.validator.addMethod("australianDate", function(value, element) {
 			// put your own logic here, this is just a (crappy) example
 			return value.match(/^\d\d?\/\d\d?\/\d\d\d\d$/);

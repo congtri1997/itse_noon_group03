@@ -1,4 +1,4 @@
-package edu.hcmuaf.fit.itse.noon.group03.controller;
+package edu.hcmuaf.fit.itse.noon.group03.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

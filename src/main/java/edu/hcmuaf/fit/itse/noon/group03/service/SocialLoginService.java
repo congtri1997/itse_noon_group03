@@ -1,4 +1,4 @@
-package edu.hcmuaf.fit.itse.noon.group03.controller;
+package edu.hcmuaf.fit.itse.noon.group03.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,7 +21,11 @@ public class SocialLoginService {
 	private MemberDAO memberDAO;
 
 	public boolean isSocialAccountExist(String providerID, String providerUserID) {
-		return userConnectionDAO.getOne(providerID, providerUserID) != null;
+		return userConnectionDAO.checkExistUserConnection(providerID, providerUserID);
+	}
+
+	public UserConnection getUserConnection(String providerID, String providerUserID) {
+		return userConnectionDAO.getOne(providerID, providerUserID);
 	}
 
 	public void addMember(String userName, String providerID, String providerUserID) {
