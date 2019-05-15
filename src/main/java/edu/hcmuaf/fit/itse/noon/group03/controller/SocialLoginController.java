@@ -114,7 +114,7 @@ public class SocialLoginController {
 
 		session.setAttribute("member", member);
 
-		return "redirect:/success";
+		return "redirect:/profile";
 	}
 
 }
