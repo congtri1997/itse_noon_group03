@@ -7,7 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import edu.hcmuaf.fit.itse.noon.group03.form.FormAddMember;
+import edu.hcmuaf.fit.itse.noon.group03.form.FormMember;
 import edu.hcmuaf.fit.itse.noon.group03.service.MemberService;
 import edu.hcmuaf.fit.itse.noon.group03.util.ValidatorUtil;
 
@@ -21,13 +21,14 @@ public class MemberAddvalidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return FormAddMember.class.isAssignableFrom(clazz);
+		return FormMember.class.isAssignableFrom(clazz);
 
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		FormAddMember formAddMember = (FormAddMember) target;
+		FormMember formAddMember = (FormMember) target;
+		formAddMember.setEmail(formAddMember.getEmail() != null ? formAddMember.getEmail().trim() : null);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "NotEmpty.formAddMember.firstName");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "NotEmpty.formAddMember.lastName");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty.formAddMember.email");

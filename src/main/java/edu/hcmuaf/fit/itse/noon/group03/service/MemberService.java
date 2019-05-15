@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.hcmuaf.fit.itse.noon.group03.entity.Member;
-import edu.hcmuaf.fit.itse.noon.group03.form.FormAddMember;
+import edu.hcmuaf.fit.itse.noon.group03.form.FormMember;
 import edu.hcmuaf.fit.itse.noon.group03.repository.MemberDAO;
+import edu.hcmuaf.fit.itse.noon.group03.util.MyUtils;
 
 @Service
 @Transactional
@@ -25,8 +26,8 @@ public class MemberService {
 		return memberDAO.getListEmail();
 	}
 
-	public void addMember(FormAddMember formAddMember) {
-		memberDAO.save(formAddMember.convertToEntity(passwordEncoder));
+	public void addMember(FormMember formAddMember) {
+		memberDAO.save(MyUtils.convertFormMemberToMember(formAddMember, passwordEncoder));
 	}
 
 	public List<Member> getMembers() {
@@ -36,7 +37,20 @@ public class MemberService {
 	public Member getMemberByEmail(String email) {
 		return memberDAO.getOneByEmail(email);
 	}
+
 	public Member getMemberByUserName(String userName) {
 		return memberDAO.getOneByUserName(userName);
+	}
+
+	public void updateProfile(FormMember formUpdateMember) {
+		Member member = memberDAO.getMemberByID(formUpdateMember.getID());
+		MyUtils.convertFormUpdateMemberToMember(formUpdateMember, member);
+		memberDAO.save(member);
+	}
+
+	public void updatePassword(FormMember formUpdateMember) {
+		Member member = memberDAO.getMemberByID(formUpdateMember.getID());
+		member.setPassword(passwordEncoder.encode(formUpdateMember.getPassword()));
+		memberDAO.save(member);
 	}
 }

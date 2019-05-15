@@ -7,7 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import edu.hcmuaf.fit.itse.noon.group03.entity.Member;
 
-public class FormAddMember {
+public class FormMember {
+	private long ID;
 	private String email;
 	private String password;
 	private String confirmPassword;
@@ -84,17 +85,12 @@ public class FormAddMember {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Member convertToEntity(PasswordEncoder passwordEncoder) {
-		Member member = new Member();
-		member.setEmail(email);
-		member.setPassword(passwordEncoder.encode(password));
-		member.setPhone(phoneNumber);
-		member.setFirstName(firstName);
-		member.setLastName(lastName);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		member.setDateOfBirth(LocalDate.parse(dateOfBirth, formatter));
-		member.setUserName(userName);
-		return member;
+	public long getID() {
+		return ID;
+	}
+
+	public void setID(long iD) {
+		ID = iD;
 	}
 
 }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.hcmuaf.fit.itse.noon.group03.entity.Member;
-import edu.hcmuaf.fit.itse.noon.group03.form.FormAddMember;
+import edu.hcmuaf.fit.itse.noon.group03.form.FormMember;
 import edu.hcmuaf.fit.itse.noon.group03.service.MemberService;
 import edu.hcmuaf.fit.itse.noon.group03.service.SocialLoginService;
 import edu.hcmuaf.fit.itse.noon.group03.util.FBUtils;
@@ -64,7 +64,7 @@ public class SocialLoginController {
 
 		if (socialLoginService.isSocialAccountExist(loginType, providerUserID)) {
 			session.setAttribute("member", socialLoginService.getUserConnection(loginType, providerUserID).getMember());
-			return "success";
+			return "redirect:/profile";
 		} else {
 //			return "redirect:/registerSocialAccount/" + loginType + "/" + providerUserID + "/";
 			attributes.addFlashAttribute("loginType", loginType);
@@ -79,7 +79,7 @@ public class SocialLoginController {
 		System.out.println("userID " + providerUserID);
 		model.addAttribute("providerUserID", providerUserID);
 		model.addAttribute("providerID", providerID);
-		FormAddMember formAddMember = new FormAddMember();
+		FormMember formAddMember = new FormMember();
 		model.addAttribute("formAddMember", formAddMember);
 		return "socialRegister";
 	}
@@ -96,7 +96,7 @@ public class SocialLoginController {
 //	}
 
 	@RequestMapping(value = "/registerSocialAccount", method = RequestMethod.POST)
-	public String doSocialRegister(@ModelAttribute("formAddMember") @Valid FormAddMember formAddMember,
+	public String doSocialRegister(@ModelAttribute("formAddMember") @Valid FormMember formAddMember,
 			BindingResult result, ModelMap modelMap, @ModelAttribute("providerID") String providerID,
 			@ModelAttribute("providerUserID") String providerUserID, RedirectAttributes attributes,
 			HttpSession session) {

@@ -248,6 +248,7 @@
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
 				</configuration>
+				
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -257,6 +258,7 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+		
 		</plugins>
 	</build>
 </project>

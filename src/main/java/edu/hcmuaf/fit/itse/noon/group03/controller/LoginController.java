@@ -39,7 +39,7 @@ public class LoginController {
 		boolean login = loginService.login(userName, password);
 		if (login) {
 			session.setAttribute("member", memberService.getMemberByUserName(userName));
-			return "success";
+			return "redirect:/profile";
 		} else {
 			model.addAttribute("loginError", "Tài khoản hoặc mật khẩu không đúng");
 			return "login";

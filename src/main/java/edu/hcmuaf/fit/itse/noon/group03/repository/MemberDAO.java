@@ -28,6 +28,11 @@ public class MemberDAO {
 		session.saveOrUpdate(member);
 	}
 
+	public Member getMemberByID(Long ID) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(Member.class, ID);
+	}
+
 	public List<Member> getListMember() {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
