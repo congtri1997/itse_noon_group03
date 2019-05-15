@@ -29,6 +29,7 @@
 				placeholder="Email address" required autofocus>
 			<button class="btn btn-primary btn-block" type="submit">Reset
 				Password</button>
+			<p>${message }</p>
 			<a href="<c:url value="/login" />"><i class="fas fa-angle-left"></i>
 				Back</a>
 		</form>

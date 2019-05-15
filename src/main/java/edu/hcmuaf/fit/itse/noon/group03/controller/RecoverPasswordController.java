@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.hcmuaf.fit.itse.noon.group03.service.MemberService;
 import edu.hcmuaf.fit.itse.noon.group03.service.RecoverPasswordService;
 
 @Controller
@@ -17,6 +18,9 @@ public class RecoverPasswordController {
 	@Autowired
 	private RecoverPasswordService recoverPasswordService;
 
+	@Autowired
+	private MemberService memberService;
+
 	@RequestMapping(value = { "/recoverpassword" }, method = RequestMethod.GET)
 	public String recoverPassword() {
 
@@ -24,9 +28,16 @@ public class RecoverPasswordController {
 	}
 
 	@RequestMapping(value = { "/recoverpassword" }, method = RequestMethod.POST)
-	public String recoverPassword(@RequestParam("email") String email) {
-		System.out.println("create request");
-		recoverPasswordService.createRecoverRequest(email);
+	public String recoverPassword(@RequestParam("email") String email, Model model) {
+		String message = "";
+		if (memberService.getMemberByEmail(email) != null) {
+
+			recoverPasswordService.createRecoverRequest(email);
+			message = "Đã gửi email khôi phục mật khẩu";
+		} else {
+			message ="Email này không tồn tại";
+		}
+		model.addAttribute("message", message);
 		return "recover";
 	}
 
