@@ -1,5 +1,7 @@
 package edu.hcmuaf.fit.itse.noon.group03.util;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,8 +22,13 @@ public class ValidatorUtil {
 	public static boolean valdiateDate(String date) {
 		if (date == null)
 			return false;
-		Matcher matcher = VALID_DATE_REGEX.matcher(date);
-		return matcher.find();
+		try {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			LocalDate.parse(date, formatter);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 
 	public static boolean validatePhone(String phone) {

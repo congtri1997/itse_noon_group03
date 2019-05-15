@@ -1,5 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java/edu/hcmuaf/fit/itse/noon/group03/controller/LoginController.java=UTF-8
+encoding//src/main/java/edu/hcmuaf/fit/itse/noon/group03/controller/MemberController.java=UTF-8
 encoding//src/main/java/edu/hcmuaf/fit/itse/noon/group03/controller/RecoverPasswordController.java=UTF-8
 encoding//src/main/java/edu/hcmuaf/fit/itse/noon/group03/service/RecoverPasswordService.java=UTF-8
+encoding//src/main/java/edu/hcmuaf/fit/itse/noon/group03/util/MyUtils.java=UTF-8
+encoding//src/main/java/edu/hcmuaf/fit/itse/noon/group03/util/ValidatorUtil.java=UTF-8
 encoding//src/main/resources/messages.properties=UTF-8
